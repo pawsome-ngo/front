@@ -1,6 +1,7 @@
 import React from 'react';
-import imageOne from '../images/image-one.jpg'; // Make sure the path is correct
-import '../App.css'; // We'll still use the main CSS file for now
+import { Link } from 'react-router-dom';
+import Carousel from './Carousel'; // Import the new Carousel component
+import '../App.css';
 
 const HomePage = () => (
     <main className="hero">
@@ -11,11 +12,12 @@ const HomePage = () => (
             </p>
             <div className="hero-buttons">
                 <a href="#adopt" className="button button-primary">Adopt a Friend</a>
-                <a href="#volunteer" className="button button-secondary">Volunteer</a>
+                <Link to="/signup" className="button button-secondary">Join Us</Link>
             </div>
         </div>
         <div className="hero-image-container">
-            <img src={imageOne} alt="Rescued animal" className="hero-image" />
+            {/* Replace the single image with the Carousel component */}
+            <Carousel />
         </div>
     </main>
 );

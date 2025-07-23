@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { FaInstagram, FaFacebook } from 'react-icons/fa'; // Import icons
 import './App.css';
 
 // Import the page components
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
+import SignUpPage from './components/SignUpPage';
+
+// Import your new icon images
+import facebookIcon from './images/icons/facebook.png';
+import instagramIcon from './images/icons/instagram.png';
 
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +28,7 @@ function App() {
                     <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
                         <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>About</Link>
-                        <a href="#services" className="nav-link">Services</a>
+                        <Link to="/signup" className="nav-link" onClick={() => setIsMenuOpen(false)}>Join Us</Link>
                         <a href="#contact" className="nav-link">Contact</a>
                         <a href="#donate" className="nav-link donate-button">Donate</a>
                     </nav>
@@ -37,16 +41,17 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
+                    <Route path="/signup" element={<SignUpPage />} />
                 </Routes>
 
                 {/* Footer */}
                 <footer className="footer">
                     <div className="social-links">
                         <a href="https://www.instagram.com/pawsome_agartala_registeredngo/?hl=en" target="_blank" rel="noopener noreferrer" className="social-link">
-                            <FaInstagram />
+                            <img src={instagramIcon} alt="Instagram" className="social-icon-img" />
                         </a>
                         <a href="https://www.facebook.com/pawsomengo/" target="_blank" rel="noopener noreferrer" className="social-link">
-                            <FaFacebook />
+                            <img src={facebookIcon} alt="Facebook" className="social-icon-img" />
                         </a>
                     </div>
                     <p>&copy; 2024 Pawsome NGO. All Rights Reserved.</p>
