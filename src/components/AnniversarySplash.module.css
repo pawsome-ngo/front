@@ -1,0 +1,96 @@
+.splashScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.splashScreen.exiting {
+    opacity: 0;
+}
+
+.content {
+    animation: fadeInScaleUp 1s ease-out forwards;
+}
+
+.logo {
+    font-size: 4rem;
+    animation: bounce 1s infinite alternate;
+}
+
+.content h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.content p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* --- Confetti Animation --- */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    background-color: #f1c40f;
+    top: -20px;
+    opacity: 0;
+    animation: fall 5s linear infinite;
+}
+
+.confetti-0 { left: 10%; animation-delay: 0s; background-color: #3498db; }
+.confetti-1 { left: 20%; animation-delay: 1s; background-color: #2ecc71; }
+.confetti-2 { left: 30%; animation-delay: 2.5s; background-color: #9b59b6; }
+.confetti-3 { left: 40%; animation-delay: 0.5s; background-color: #e67e22; }
+.confetti-4 { left: 50%; animation-delay: 1.5s; background-color: #1abc9c; }
+.confetti-5 { left: 60%; animation-delay: 3s; background-color: #f1c40f; }
+.confetti-6 { left: 70%; animation-delay: 2s; background-color: #3498db; }
+.confetti-7 { left: 80%; animation-delay: 4s; background-color: #2ecc71; }
+.confetti-8 { left: 90%; animation-delay: 1.2s; background-color: #9b59b6; }
+.confetti-9 { left: 5%; animation-delay: 3.5s; background-color: #e67e22; }
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.2rem;
+    }
+}

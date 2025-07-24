@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import styles from './App.module.css';
 
@@ -8,7 +8,8 @@ import AboutPage from './components/AboutPage';
 import SignUpPage from './components/SignUpPage';
 import AdoptionPage from './components/AdoptionPage';
 import EventsPage from './components/EventsPage';
-import DonatePage from './components/DonatePage'; // Import the new page
+import DonatePage from './components/DonatePage';
+import AnniversarySplash from './components/AnniversarySplash'; // Import the new component
 
 // Import your icon images
 import facebookIcon from './images/icons/facebook.png';
@@ -16,9 +17,16 @@ import instagramIcon from './images/icons/instagram.png';
 
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showSplash, setShowSplash] = useState(!sessionStorage.getItem('splashShown'));
+
+    const handleSplashFinish = () => {
+        sessionStorage.setItem('splashShown', 'true');
+        setShowSplash(false);
+    };
 
     return (
         <Router>
+            {showSplash && <AnniversarySplash onFinish={handleSplashFinish} />}
             <div className={styles.app}>
                 {/* Header */}
                 <header className={styles.header}>
@@ -54,7 +62,7 @@ function App() {
                     <Route path="/signup" element={<SignUpPage />} />
                     <Route path="/adoption" element={<AdoptionPage />} />
                     <Route path="/events" element={<EventsPage />} />
-                    <Route path="/donate" element={<DonatePage />} /> {/* Add the new route */}
+                    <Route path="/donate" element={<DonatePage />} />
                 </Routes>
 
                 {/* Footer */}

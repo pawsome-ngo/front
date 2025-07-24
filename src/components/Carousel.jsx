@@ -27,7 +27,7 @@ const Carousel = ({ images = [] }) => { // Accept images as a prop
         if (images.length > 1) {
             const timer = setInterval(() => {
                 goToNext();
-            }, 5000); // Change slide every 5 seconds
+            }, 2000); // Change slide every 2 seconds
 
             return () => {
                 clearInterval(timer); // Cleanup the timer on component unmount

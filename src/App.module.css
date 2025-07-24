@@ -14,7 +14,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #fff;
+  background-color: #fdfdfd; /* Added light gray background */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
@@ -232,7 +232,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #fff;
+    background-color: #fdfdfd; /* Match header background */
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
