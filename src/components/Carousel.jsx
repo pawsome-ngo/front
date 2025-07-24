@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import '../App.css';
+import styles from './Carousel.module.css';
 
-// Import your images from the new folder
-import imageOne from '../images/carousel/image-one.jpg';
-import imageTwo from '../images/carousel/image-two.jpg';
-import imageThree from '../images/carousel/image-three.jpg';
-import imageFour from '../images/carousel/image-four.jpg';
-import imageFive from '../images/carousel/image-five.jpg';
-
-const images = [imageOne, imageTwo, imageThree, imageFour, imageFive];
-
-const Carousel = () => {
+const Carousel = ({ images = [] }) => { // Accept images as a prop
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
+        if (images.length === 0) return;
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
 
     const goToNext = () => {
+        if (images.length === 0) return;
         const isLastSlide = currentIndex === images.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
@@ -31,35 +24,44 @@ const Carousel = () => {
     };
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            goToNext();
-        }, 3000); // Change slide every 5 seconds
+        if (images.length > 1) {
+            const timer = setInterval(() => {
+                goToNext();
+            }, 5000); // Change slide every 5 seconds
 
-        return () => {
-            clearInterval(timer); // Cleanup the timer on component unmount
-        };
-    }, [currentIndex]);
+            return () => {
+                clearInterval(timer); // Cleanup the timer on component unmount
+            };
+        }
+    }, [currentIndex, images]);
+
+    if (images.length === 0) {
+        return <div>No images to display.</div>;
+    }
 
     return (
-        <div className="carousel-container">
-            <div className="carousel-slider" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        <div className={styles.carouselContainer}>
+            <div className={styles.navigationOverlay} onClick={goToPrevious}></div>
+            <div className={`${styles.navigationOverlay} ${styles.navigationOverlayRight}`} onClick={goToNext}></div>
+
+            <div className={styles.carouselSlider} style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {images.map((image, index) => (
-                    <div className="carousel-slide" key={index}>
-                        <img src={image} alt={`Slide ${index + 1}`} className="carousel-image" />
+                    <div className={styles.carouselSlide} key={index}>
+                        <img src={image} alt={`Slide ${index + 1}`} className={styles.carouselImage} />
                     </div>
                 ))}
             </div>
-            <button className="carousel-arrow carousel-arrow--left" onClick={goToPrevious}>
+            <button className={`${styles.carouselArrow} ${styles.carouselArrowLeft}`} onClick={goToPrevious}>
                 <FaChevronLeft />
             </button>
-            <button className="carousel-arrow carousel-arrow--right" onClick={goToNext}>
+            <button className={`${styles.carouselArrow} ${styles.carouselArrowRight}`} onClick={goToNext}>
                 <FaChevronRight />
             </button>
-            <div className="carousel-dots">
+            <div className={styles.carouselDots}>
                 {images.map((_, slideIndex) => (
                     <button
                         key={slideIndex}
-                        className={`carousel-dot ${currentIndex === slideIndex ? 'carousel-dot--active' : ''}`}
+                        className={`${styles.carouselDot} ${currentIndex === slideIndex ? styles.carouselDotActive : ''}`}
                         onClick={() => goToSlide(slideIndex)}
                     ></button>
                 ))}

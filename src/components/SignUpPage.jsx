@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import SignUpModal from './SignUpModal'; // Import the renamed Modal component
-import '../App.css';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { FaArrowLeft } from 'react-icons/fa';
+import SignUpModal from './SignUpModal';
+import CustomSelect from './CustomSelect';
+import styles from './SignUpPage.module.css';
+import appStyles from '../App.module.css';
 
 const SignUpPage = () => {
+    const navigate = useNavigate(); // Hook for navigation
     const [formData, setFormData] = useState({
         name: '',
         password: '',
@@ -15,7 +20,7 @@ const SignUpPage = () => {
         hasFirstAid: 'No',
     });
     const [locationStatus, setLocationStatus] = useState('');
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control the modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -29,101 +34,96 @@ const SignUpPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // In a real app, you'd send this data to a server
         console.log(formData);
-        setIsModalOpen(true); // Open the modal
+        setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        // Optionally, reset the form after closing the modal
+        // Reset the form
         setFormData({
             name: '', password: '', phone: '', address: '', motivation: '',
             hasVehicle: 'No', vehicleType: '', canProvideShelter: 'No', hasFirstAid: 'No',
         });
+        // Navigate back to the home page
+        navigate('/');
     };
+
+    const yesNoOptions = [{ value: 'No', label: 'No' }, { value: 'Yes', label: 'Yes' }];
+    const vehicleOptions = [{ value: '', label: 'Select...'}, { value: 'Bike', label: 'Bike' }, { value: 'Scooty', label: 'Scooty' }, { value: 'Car', label: 'Car' }];
 
     return (
         <>
-            <div className="form-container">
-                <div className="form-header">
+            <div className={styles.formContainer}>
+                <Link to="/" className={styles.backLink}>
+                    <FaArrowLeft />
+                    <span>Back to Home</span>
+                </Link>
+
+                <div className={styles.formHeader}>
                     <h1>Join Our Team</h1>
                     <p>Become a Pawsome volunteer and make a difference.</p>
                 </div>
-                <form onSubmit={handleSubmit} className="form">
-                    <div className="form__grid">
-                        <div className="form__group">
-                            <label htmlFor="name" className="form__label">Full Name</label>
-                            <input type="text" id="name" name="name" className="form__input" value={formData.name} onChange={handleChange} required />
+                <form onSubmit={handleSubmit} className={styles.form}>
+                    <div className={styles.formGrid}>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="name" className={styles.formLabel}>Full Name</label>
+                            <input type="text" id="name" name="name" className={styles.formInput} value={formData.name} onChange={handleChange} required />
                         </div>
-                        <div className="form__group">
-                            <label htmlFor="phone" className="form__label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" className="form__input" value={formData.phone} onChange={handleChange} required />
+                        <div className={styles.formGroup}>
+                            <label htmlFor="phone" className={styles.formLabel}>Phone Number</label>
+                            <input type="tel" id="phone" name="phone" className={styles.formInput} value={formData.phone} onChange={handleChange} required />
                         </div>
-                        <div className="form__group form__group--full-width">
-                            <label htmlFor="address" className="form__label">Address</label>
-                            <input type="text" id="address" name="address" className="form__input" value={formData.address} onChange={handleChange} required />
+                        <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
+                            <label htmlFor="address" className={styles.formLabel}>Address</label>
+                            <input type="text" id="address" name="address" className={styles.formInput} value={formData.address} onChange={handleChange} required />
                         </div>
-                        <div className="form__group form__group--full-width">
-                            <label htmlFor="password" className="form__label">Create a Password</label>
-                            <input type="password" id="password" name="password" className="form__input" value={formData.password} onChange={handleChange} required />
+                        <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
+                            <label htmlFor="password" className={styles.formLabel}>Create a Password</label>
+                            <input type="password" id="password" name="password" className={styles.formInput} value={formData.password} onChange={handleChange} required />
                         </div>
-                        <div className="form__group form__group--full-width">
-                            <label htmlFor="motivation" className="form__label">What made you want to join us?</label>
-                            <textarea id="motivation" name="motivation" rows="4" className="form__textarea" value={formData.motivation} onChange={handleChange} required></textarea>
+                        <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
+                            <label htmlFor="motivation" className={styles.formLabel}>What made you want to join us?</label>
+                            <textarea id="motivation" name="motivation" rows="4" className={styles.formTextarea} value={formData.motivation} onChange={handleChange} required></textarea>
                         </div>
-                        <div className="form__group">
-                            <label htmlFor="hasVehicle" className="form__label">Do you have a vehicle?</label>
-                            <select id="hasVehicle" name="hasVehicle" className="form__select" value={formData.hasVehicle} onChange={handleChange}>
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
-                            </select>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="hasVehicle" className={styles.formLabel}>Do you have a vehicle?</label>
+                            <CustomSelect name="hasVehicle" options={yesNoOptions} value={formData.hasVehicle} onChange={handleChange} />
                         </div>
                         {formData.hasVehicle === 'Yes' && (
-                            <div className="form__group">
-                                <label htmlFor="vehicleType" className="form__label">Vehicle Type</label>
-                                <select id="vehicleType" name="vehicleType" className="form__select" value={formData.vehicleType} onChange={handleChange}>
-                                    <option value="">Select...</option>
-                                    <option value="Bike">Bike</option>
-                                    <option value="Scooty">Scooty</option>
-                                    <option value="Car">Car</option>
-                                </select>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="vehicleType" className={styles.formLabel}>Vehicle Type</label>
+                                <CustomSelect name="vehicleType" options={vehicleOptions} value={formData.vehicleType} onChange={handleChange} />
                             </div>
                         )}
-                        <div className="form__group">
-                            <label htmlFor="canProvideShelter" className="form__label">Can you provide temporary shelter?</label>
-                            <select id="canProvideShelter" name="canProvideShelter" className="form__select" value={formData.canProvideShelter} onChange={handleChange}>
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
-                            </select>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="canProvideShelter" className={styles.formLabel}>Can you provide temporary shelter?</label>
+                            <CustomSelect name="canProvideShelter" options={yesNoOptions} value={formData.canProvideShelter} onChange={handleChange} />
                         </div>
-                        <div className="form__group">
-                            <label htmlFor="hasFirstAid" className="form__label">Do you have a First-Aid Kit?</label>
-                            <select id="hasFirstAid" name="hasFirstAid" className="form__select" value={formData.hasFirstAid} onChange={handleChange}>
-                                <option value="No">No</option>
-                                <option value="Yes">Yes</option>
-                            </select>
+                        <div className={styles.formGroup}>
+                            <label htmlFor="hasFirstAid" className={styles.formLabel}>Do you have a First-Aid Kit?</label>
+                            <CustomSelect name="hasFirstAid" options={yesNoOptions} value={formData.hasFirstAid} onChange={handleChange} />
                         </div>
-                        <div className="form__group form__group--full-width">
-                            <label className="form__label">Current Location</label>
-                            <button type="button" onClick={handleGetLocation} className="btn btn--secondary">
+                        <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
+                            <label className={styles.formLabel}>Current Location</label>
+                            <button type="button" onClick={handleGetLocation} className={`${appStyles.btn} ${appStyles.btnSecondary}`}>
                                 Fetch Current Location
                             </button>
-                            {locationStatus && <p className="location-status">{locationStatus}</p>}
+                            {locationStatus && <p className={styles.locationStatus}>{locationStatus}</p>}
                         </div>
                     </div>
-                    <button type="submit" className="btn btn--primary btn--full-width">Sign Up</button>
+                    <button type="submit" className={`${appStyles.btn} ${appStyles.btnPrimary} ${appStyles.btnFullWidth}`}>Sign Up</button>
                 </form>
             </div>
 
             <SignUpModal isOpen={isModalOpen} onClose={closeModal}>
-                <div className="success-modal">
-                    <div className="success-modal__icon">✔</div>
-                    <h2 className="success-modal__title">Thank You!</h2>
-                    <p className="success-modal__message">
+                <div className={appStyles.successModal}>
+                    <div className={appStyles.successModalIcon}>✔</div>
+                    <h2 className={appStyles.successModalTitle}>Thank You!</h2>
+                    <p className={appStyles.successModalMessage}>
                         Thanks for signing up. Someone will reach out to you soon. Please remember your password!
                     </p>
-                    <button onClick={closeModal} className="btn btn--primary">
+                    <button onClick={closeModal} className={`${appStyles.btn} ${appStyles.btnPrimary}`}>
                         Got it!
                     </button>
                 </div>

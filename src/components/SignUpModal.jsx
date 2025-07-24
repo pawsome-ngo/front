@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css'; // We'll use the main CSS file for styling
+import styles from './SignUpModal.module.css';
 
 const SignUpModal = ({ isOpen, onClose, children }) => {
     if (!isOpen) {
@@ -7,9 +7,9 @@ const SignUpModal = ({ isOpen, onClose, children }) => {
     }
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <button className="modal-close-btn" onClick={onClose}>
+        <div className={styles.modalOverlay} onClick={onClose}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <button className={styles.modalCloseBtn} onClick={onClose}>
                     &times;
                 </button>
                 {children}

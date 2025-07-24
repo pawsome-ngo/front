@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import './App.css';
+import styles from './App.module.css';
 
 // Import the page components
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import SignUpPage from './components/SignUpPage';
+import AdoptionPage from './components/AdoptionPage'; // Import the new page
 
 // Import your new icon images
 import facebookIcon from './images/icons/facebook.png';
@@ -16,24 +17,30 @@ function App() {
 
     return (
         <Router>
-            <div className="app">
+            <div className={styles.app}>
                 {/* Header */}
-                <header className="header">
-                    <div className="logo-container">
-                        <Link to="/" className="logo-link" onClick={() => setIsMenuOpen(false)}>
-                            <span role="img" aria-label="paw print" className="logo-icon">🐾</span>
-                            <span className="logo-text">Pawsome NGO</span>
+                <header className={styles.header}>
+                    <div className={styles.logoContainer}>
+                        <Link to="/" className={styles.logoLink} onClick={() => setIsMenuOpen(false)}>
+                            <span role="img" aria-label="paw print" className={styles.logoIcon}>🐾</span>
+                            <span className={styles.logoText}>Pawsome NGO</span>
                         </Link>
                     </div>
-                    <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-                        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                        <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>About</Link>
-                        <Link to="/signup" className="nav-link" onClick={() => setIsMenuOpen(false)}>Join Us</Link>
-                        <a href="#contact" className="nav-link">Contact</a>
-                        <a href="#donate" className="nav-link donate-button">Donate</a>
+                    <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+                        <Link to="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Home</Link>
+                        <Link to="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>About</Link>
+                        <Link to="/adoption" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Adoption</Link>
+                        <Link to="/signup" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Join Us</Link>
+                        <a href="#donate" className={`${styles.navLink} ${styles.donateButton}`}>Donate</a>
                     </nav>
-                    <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        {isMenuOpen ? '✖' : '☰'}
+                    <button
+                        className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span className={styles.hamburgerBar}></span>
+                        <span className={styles.hamburgerBar}></span>
+                        <span className={styles.hamburgerBar}></span>
                     </button>
                 </header>
 
@@ -42,16 +49,17 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/signup" element={<SignUpPage />} />
+                    <Route path="/adoption" element={<AdoptionPage />} /> {/* Add the new route */}
                 </Routes>
 
                 {/* Footer */}
-                <footer className="footer">
-                    <div className="social-links">
-                        <a href="https://www.instagram.com/pawsome_agartala_registeredngo/?hl=en" target="_blank" rel="noopener noreferrer" className="social-link">
-                            <img src={instagramIcon} alt="Instagram" className="social-icon-img" />
+                <footer className={styles.footer}>
+                    <div className={styles.socialLinks}>
+                        <a href="https://www.instagram.com/pawsome_agartala_registeredngo/?hl=en" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                            <img src={instagramIcon} alt="Instagram" className={styles.socialIconImg} />
                         </a>
-                        <a href="https://www.facebook.com/pawsomengo/" target="_blank" rel="noopener noreferrer" className="social-link">
-                            <img src={facebookIcon} alt="Facebook" className="social-icon-img" />
+                        <a href="https://www.facebook.com/pawsomengo/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                            <img src={facebookIcon} alt="Facebook" className={styles.socialIconImg} />
                         </a>
                     </div>
                     <p>&copy; 2024 Pawsome NGO. All Rights Reserved.</p>

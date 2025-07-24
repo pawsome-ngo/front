@@ -1,0 +1,103 @@
+/* --- Carousel Styles --- */
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carouselSlider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carouselSlide {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+.carouselImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* New styles for the clickable areas */
+.navigationOverlay {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 5; /* Positioned above the image but below arrows/dots */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* Removes the tap highlight on mobile */
+}
+
+.navigationOverlayLeft {
+    left: 0;
+}
+
+.navigationOverlayRight {
+    right: 0;
+}
+
+.carouselArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 10; /* Ensure arrows are on top */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carouselContainer:hover .carouselArrow {
+    opacity: 1;
+}
+
+.carouselArrowLeft {
+    left: 10px;
+}
+
+.carouselArrowRight {
+    right: 10px;
+}
+
+.carouselDots {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10; /* Ensure dots are on top */
+}
+
+.carouselDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.carouselDotActive {
+    background-color: white;
+    transform: scale(1.2);
+}
