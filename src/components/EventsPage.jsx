@@ -24,7 +24,31 @@ import pujaImg3 from '../images/events/pet-friendly-durga-puja/image-three.jpeg'
 import pujaImg4 from '../images/events/pet-friendly-durga-puja/image-four.jpeg';
 import pujaImg5 from '../images/events/pet-friendly-durga-puja/image-five.jpeg';
 
+// Import all images for the vaccination camps event
+import vacImg1 from '../images/events/vaccination-camps/image-one.jpeg';
+import vacImg2 from '../images/events/vaccination-camps/image-two.jpeg';
+import vacImg3 from '../images/events/vaccination-camps/image-three.jpeg';
+import vacImg4 from '../images/events/vaccination-camps/image-four.jpeg';
+import vacImg5 from '../images/events/vaccination-camps/image-five.jpeg';
+
+// Import all images for the dog smuggling event
+import smuggleImg1 from '../images/events/dog-smuggling/image-one.jpeg';
+import smuggleImg2 from '../images/events/dog-smuggling/image-two.jpeg';
+import smuggleImg3 from '../images/events/dog-smuggling/image-three.jpeg';
+import smuggleImg4 from '../images/events/dog-smuggling/image-four.jpeg';
+import smuggleImg5 from '../images/events/dog-smuggling/image-five.jpeg';
+
 const eventsData = [
+    {
+        title: 'Anti-Smuggling Operations',
+        description: 'In close cooperation with the Tripura Police, our brave teams have been instrumental in intercepting illegal dog smuggling operations. This dangerous but vital work saves countless lives and brings criminals to justice. We are committed to ending this cruel trade.',
+        images: [smuggleImg1, smuggleImg2, smuggleImg3, smuggleImg4, smuggleImg5],
+    },
+    {
+        title: 'Vaccination Camps',
+        description: 'Protecting our community, one paw at a time. Our regular vaccination camps help prevent the spread of diseases like rabies, ensuring the health and safety of both street animals and residents. These events are a crucial part of our mission to foster a safe environment for all.',
+        images: [vacImg1, vacImg2, vacImg3, vacImg4, vacImg5],
+    },
     {
         title: 'Recent Adoption Drives',
         description: 'We are overjoyed to share moments from our recent adoption events. Each picture tells a story of a life changed forever. These are just a few of the many happy beginnings we\'ve facilitated, all thanks to the love and support of our community. More stories to come!',

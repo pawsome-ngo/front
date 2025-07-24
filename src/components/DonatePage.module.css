@@ -1,0 +1,79 @@
+.pageContainer {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 3rem;
+}
+
+.headerIcon {
+    font-size: 3rem;
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.donateCard {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.donateCard h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin: 0 0 1rem 0;
+}
+
+.donateCard p {
+    color: #7f8c8d;
+    margin-bottom: 2rem;
+}
+
+.upiInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    border: 2px dashed #dcdcdc;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.upiId {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: monospace;
+}
+
+@media (max-width: 768px) {
+.pageContainer {
+        padding: 1.5rem;
+    }
+.header h1 {
+        font-size: 2.2rem;
+    }
+.upiInfo {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

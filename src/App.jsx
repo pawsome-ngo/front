@@ -7,7 +7,8 @@ import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
 import SignUpPage from './components/SignUpPage';
 import AdoptionPage from './components/AdoptionPage';
-import EventsPage from './components/EventsPage'; // Import the new page
+import EventsPage from './components/EventsPage';
+import DonatePage from './components/DonatePage'; // Import the new page
 
 // Import your icon images
 import facebookIcon from './images/icons/facebook.png';
@@ -33,7 +34,7 @@ function App() {
                         <Link to="/adoption" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Adoption</Link>
                         <Link to="/events" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Events</Link>
                         <Link to="/signup" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Join Us</Link>
-                        <a href="#donate" className={`${styles.navLink} ${styles.donateButton}`}>Donate</a>
+                        <Link to="/donate" className={`${styles.navLink} ${styles.donateButton}`} onClick={() => setIsMenuOpen(false)}>Donate</Link>
                     </nav>
                     <button
                         className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
@@ -52,7 +53,8 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/signup" element={<SignUpPage />} />
                     <Route path="/adoption" element={<AdoptionPage />} />
-                    <Route path="/events" element={<EventsPage />} /> {/* Add the new route */}
+                    <Route path="/events" element={<EventsPage />} />
+                    <Route path="/donate" element={<DonatePage />} /> {/* Add the new route */}
                 </Routes>
 
                 {/* Footer */}
