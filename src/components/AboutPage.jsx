@@ -1,5 +1,39 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaShieldAlt, FaHeartbeat, FaHome } from 'react-icons/fa'; // Import icons
 import styles from './AboutPage.module.css';
+import appStyles from '../App.module.css';
+
+// Import profile pictures
+import devanjanaGupta from '../images/profile/devanjana-gupta.jpeg';
+import wrighbedDutta from '../images/profile/wrighbed-dutta.jpeg';
+import avikSengupta from '../images/profile/avik-sengupta.jpeg';
+import anirudhChakraborty from '../images/profile/anirudh-chakraborty.jpeg';
+import sreekantaBol from '../images/profile/sreekanta-bol.jpeg';
+import nilotpalBhattacharya from '../images/profile/nilotpal-bhattacharya.jpeg';
+import ranabirRoy from '../images/profile/ranabir-roy.jpeg';
+import souvikSingha from '../images/profile/souvik-singha.jpeg';
+import amitabhaDeb from '../images/profile/amitabha-deb.jpeg';
+import sudipSaha from '../images/profile/sudip-saha.jpeg';
+
+const mainTeam = [
+    { name: 'Smt. Devanjana Gupta', title: 'Founder', image: devanjanaGupta },
+    { name: 'Shree Wrighbed Dutta', title: 'General Secretary', image: wrighbedDutta },
+    { name: 'Shree Avik Sengupta', title: 'President', image: avikSengupta },
+    { name: 'Shree Anirudh Chakraborty', title: 'Asst. General Secretary', image: anirudhChakraborty },
+    { name: 'Shree Sreekanta Bol', title: 'Vice President', image: sreekantaBol },
+];
+
+const associateMembers = [
+    { name: 'Shree Nilotpal Bhattacharya', title: 'Associate Member', image: nilotpalBhattacharya },
+    { name: 'Dr. Ranabir Roy', title: 'Associate Member', image: ranabirRoy },
+];
+
+const executiveMembers = [
+    { name: 'Souvik Singha', title: 'Executive Member', image: souvikSingha },
+    { name: 'Amitabha Deb', title: 'Executive Member', image: amitabhaDeb },
+    { name: 'Sudip Saha', title: 'Executive Member', image: sudipSaha },
+];
 
 const AboutPage = () => {
     return (
@@ -30,58 +64,62 @@ const AboutPage = () => {
                 <h2>Our Mission</h2>
                 <div className={styles.missionCards}>
                     <div className={styles.missionCard}>
+                        <FaShieldAlt className={styles.missionIcon} />
                         <h3>Justice & Awareness</h3>
-                        <p>We work with authorities to fight illegal wildlife trafficking, dog meat smuggling, and animal cruelty, ensuring justice is served. Our legal and awareness efforts are a bold stand for the rights of stray animals.</p>
+                        <p>We work with authorities to fight illegal wildlife trafficking, dog meat smuggling, and animal cruelty, ensuring justice is served.</p>
                     </div>
                     <div className={styles.missionCard}>
+                        <FaHeartbeat className={styles.missionIcon} />
                         <h3>Public Health</h3>
-                        <p>We organize vaccination drives to raise awareness about zoonotic diseases like rabies, helping to reduce human-stray dog conflicts and build healthier, safer communities.</p>
+                        <p>We organize vaccination drives to raise awareness about zoonotic diseases like rabies, helping to build healthier, safer communities.</p>
                     </div>
                     <div className={styles.missionCard}>
+                        <FaHome className={styles.missionIcon} />
                         <h3>Pet-Friendly Initiatives</h3>
-                        <p>We launch initiatives like The Dog Carnival, adoption camps, and workshops to promote responsible pet ownership and reduce cruelty towards companion animals.</p>
+                        <p>We launch initiatives like The Dog Carnival and adoption camps to promote responsible pet ownership and reduce cruelty.</p>
                     </div>
                 </div>
             </section>
 
-            <section className={styles.aboutSection}>
+            <section className={`${styles.aboutSection} ${styles.teamSectionBackground}`}>
                 <h2>Meet the Team</h2>
                 <div className={styles.teamGrid}>
-                    <div className={styles.teamMemberCard}>
-                        <h4>Smt. Devanjana Gupta</h4>
-                        <p>Founder</p>
-                    </div>
-                    <div className={styles.teamMemberCard}>
-                        <h4>Shree Wrighbed Dutta</h4>
-                        <p>General Secretary</p>
-                    </div>
-                    <div className={styles.teamMemberCard}>
-                        <h4>Shree Avik Sengupta</h4>
-                        <p>President</p>
-                    </div>
-                    <div className={styles.teamMemberCard}>
-                        <h4>Shree Anirudh Chakraborty</h4>
-                        <p>Assistant General Secretary</p>
-                    </div>
-                    <div className={styles.teamMemberCard}>
-                        <h4>Shree Sreekanta Bol</h4>
-                        <p>Vice President</p>
-                    </div>
+                    {mainTeam.map((member) => (
+                        <div className={styles.teamMemberCard} key={member.name}>
+                            <img src={member.image} alt={member.name} className={styles.profileImage} />
+                            <h4 className={styles.memberName}>{member.name}</h4>
+                            <p className={styles.memberTitle}>{member.title}</p>
+                        </div>
+                    ))}
                 </div>
-                <h3 className={styles.coreCommitteeTitle}>Executive/Core Committee Members</h3>
-                <ul className={styles.coreCommitteeList}>
-                    <li>Souvik Singha</li>
-                    <li>Amitabha Deb</li>
-                    <li>Sudip Saha</li>
-                    <li>Indrajit Saha</li>
-                    <li>Nilotpal Bhattacharjee</li>
-                    <li>Satyajit Paul</li>
-                </ul>
+
+                <h3 className={styles.coreCommitteeTitle}>Associate Members</h3>
+                <div className={styles.teamGrid}>
+                    {associateMembers.map((member) => (
+                        <div className={styles.teamMemberCard} key={member.name}>
+                            <img src={member.image} alt={member.name} className={styles.profileImage} />
+                            <h4 className={styles.memberName}>{member.name}</h4>
+                            <p className={styles.memberTitle}>{member.title}</p>
+                        </div>
+                    ))}
+                </div>
+
+                <h3 className={styles.coreCommitteeTitle}>Executive Members</h3>
+                <div className={styles.teamGrid}>
+                    {executiveMembers.map((member) => (
+                        <div className={styles.teamMemberCard} key={member.name}>
+                            <img src={member.image} alt={member.name} className={styles.profileImage} />
+                            <h4 className={styles.memberName}>{member.name}</h4>
+                            <p className={styles.memberTitle}>{member.title}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             <section className={`${styles.aboutSection} ${styles.joinUsSection}`}>
                 <h2>Join Us. Be the Voice They Need.</h2>
                 <p>Pawsome isn’t just an NGO—it’s a movement. A call to action. A fight for those who cannot fight for themselves.</p>
+                <Link to="/signup" className={`${appStyles.btn} ${appStyles.btnPrimary} ${styles.joinUsButton}`}>Become a Volunteer</Link>
             </section>
         </div>
     );

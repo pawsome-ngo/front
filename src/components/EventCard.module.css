@@ -1,0 +1,55 @@
+.card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.carouselWrapper {
+    width: 100%;
+    aspect-ratio: 5 / 5; /* Changed to a taller aspect ratio to reduce cropping */
+    overflow: hidden; /* Hide parts of the image that don't fit */
+}
+
+/* Target the Carousel component's image when it's inside our wrapper */
+.carouselWrapper :global(.carousel-image) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ensure the carousel itself fills the wrapper */
+.carouselWrapper > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+.content {
+    padding: 2rem;
+}
+
+.title {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin: 0 0 0.75rem 0;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 1.5rem;
+    }
+    .title {
+        font-size: 1.8rem;
+    }
+}

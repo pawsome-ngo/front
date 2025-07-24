@@ -63,33 +63,57 @@
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+.missionIcon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
 .missionCard h3 {
     font-size: 1.4rem;
     color: #e74c3c;
     margin-bottom: 1rem;
 }
+.teamSectionBackground {
+    /* This class is kept for structure but visual styles are removed */
+}
 .teamGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
 }
 .teamMemberCard {
-    background: #f8f9fa;
+    background: #fff;
     padding: 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    border-left: 4px solid #3498db;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
 }
-.teamMemberCard h4 {
-    margin: 0 0 0.25rem 0;
+.teamMemberCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.profileImage {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem auto;
+    border: 4px solid #f0f0f0;
+}
+.memberName {
+    margin: 0;
     font-size: 1.2rem;
     color: #2c3e50;
+    font-weight: 600;
 }
-.teamMemberCard p {
-    margin: 0;
+.memberTitle {
+    margin: 0.25rem 0 0 0; /* Add space above the title */
     font-size: 1rem;
-    color: #e74c3c;
-    text-align: center;
+    color: #7f8c8d; /* Softer color for the title */
+    font-style: italic; /* Differentiate the title */
 }
 .coreCommitteeTitle {
     text-align: center;
@@ -130,4 +154,15 @@
     color: #ecf0f1;
     font-size: 1.2rem;
     text-align: center;
+    margin-bottom: 1.5rem;
+}
+.joinUsButton {
+    background-color: #fff !important;
+    color: #34495e !important;
+    border-color: #fff !important;
+}
+.joinUsButton:hover {
+    background-color: #f0f0f0 !important;
+    color: #2c3e50 !important;
+    border-color: #f0f0f0 !important;
 }
