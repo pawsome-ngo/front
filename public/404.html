@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pawsome - Page Not Found</title>
+    <script type="text/javascript">
+        // Get the current path from the URL.
+        var path = window.location.pathname;
+
+        // Check if the path is a file or a directory.
+        // If it's a directory, we don't need to do anything.
+        var isFile = path.split('/').pop().indexOf('.') > -1;
+        if (!isFile) {
+            // This script will redirect the user to the index.html page
+            // with the correct path information for the React Router.
+            var newPath = '/';
+            var segments = path.split('/').slice(1);
+
+            // This part handles the repository name if you are not using a custom domain.
+            // Since you are, it will be skipped, but it's good practice to have it.
+            if (segments[0] !== 'pawsome.org.in') {
+                newPath += segments[0] + '/';
+            }
+
+            // Reconstruct the path for the single-page app.
+            var spaPath = segments.slice(1).join('/');
+
+            // Redirect to the index.html page.
+            window.location.replace(
+                window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + newPath + '?p=' + spaPath
+            );
+        }
+    </script>
+</head>
+<body>
+<!-- You can add a simple message here if you want -->
+</body>
+</html>
