@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaShieldAlt, FaHeartbeat, FaHome } from 'react-icons/fa';
+import {FaShieldAlt, FaHeartbeat, FaHome, FaUtensils, FaPlusSquare} from 'react-icons/fa';
 import ImageLightbox from './ImageLightbox'; // Import the new component
 import styles from './AboutPage.module.css';
 import appStyles from '../App.module.css';
@@ -85,6 +85,16 @@ const AboutPage = () => {
                     <h2>Our Mission</h2>
                     <div className={styles.missionCards}>
                         <div className={styles.missionCard}>
+                            <FaPlusSquare className={styles.missionIcon} />
+                            <h3>Rescue & Medical Care</h3>
+                            <p>We have successfully rescued over 12,000 stray animals, birds, and wildlife, providing them with critical medical care and a second chance at life.</p>
+                        </div>
+                        <div className={styles.missionCard}>
+                            <FaUtensils className={styles.missionIcon} />
+                            <h3>Community Feeding</h3>
+                            <p>We conduct feeding drives, providing nutritious and hygienic food to more than 250 stray dogs and cats across the city.</p>
+                        </div>
+                        <div className={styles.missionCard}>
                             <FaShieldAlt className={styles.missionIcon} />
                             <h3>Justice & Awareness</h3>
                             <p>We work with authorities to fight illegal wildlife trafficking, dog meat smuggling, and animal cruelty, ensuring justice is served.</p>
@@ -92,7 +102,7 @@ const AboutPage = () => {
                         <div className={styles.missionCard}>
                             <FaHeartbeat className={styles.missionIcon} />
                             <h3>Public Health</h3>
-                            <p>We organize vaccination drives to raise awareness about zoonotic diseases like rabies, helping to build healthier, safer communities.</p>
+                            <p>We organize vaccination and sterilization drives to promote public health and humanely control the stray animal population.</p>
                         </div>
                         <div className={styles.missionCard}>
                             <FaHome className={styles.missionIcon} />
