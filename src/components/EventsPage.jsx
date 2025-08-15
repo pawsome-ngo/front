@@ -38,6 +38,19 @@ import smuggleImg3 from '../images/events/dog-smuggling/image-three.jpeg';
 import smuggleImg4 from '../images/events/dog-smuggling/image-four.jpeg';
 import smuggleImg5 from '../images/events/dog-smuggling/image-five.jpeg';
 
+// Import all images for the dog smuggling event
+import dogCarnivalImg1 from '../images/events/dog-carnival/image-1.jpeg';
+import dogCarnivalImg2 from '../images/events/dog-carnival/image-2.jpeg';
+import dogCarnivalImg3 from '../images/events/dog-carnival/image-3.jpeg';
+import dogCarnivalImg4 from '../images/events/dog-carnival/image-4.jpeg';
+import dogCarnivalImg5 from '../images/events/dog-carnival/image-5.jpeg';
+import dogCarnivalImg6 from '../images/events/dog-carnival/image-6.jpeg';
+import dogCarnivalImg7 from '../images/events/dog-carnival/image-7.jpeg';
+import dogCarnivalImg8 from '../images/events/dog-carnival/image-8.jpeg';
+import dogCarnivalImg9 from '../images/events/dog-carnival/image-9.jpeg';
+import dogCarnivalImg10 from '../images/events/dog-carnival/image-10.jpeg';
+import dogCarnivalImg11 from '../images/events/dog-carnival/image-11.jpeg';
+
 const eventsData = [
     {
         title: 'Anti-Smuggling Operations',
@@ -48,6 +61,11 @@ const eventsData = [
         title: 'Vaccination Camps',
         description: 'Protecting our community, one paw at a time. Our regular vaccination camps help prevent the spread of diseases like rabies, ensuring the health and safety of both street animals and residents. These events are a crucial part of our mission to foster a safe environment for all.',
         images: [vacImg1, vacImg2, vacImg3, vacImg4, vacImg5],
+    },
+    {
+        title: 'A Pawsitively Fun Dog Carnival!',
+        description: 'The energy at our recent dog carnival was off the charts! Our canine competitors tackled agility courses, showed off their best tricks, and made new friends at every turn. Meanwhile, their humans browsed through vendor booths and enjoyed a day of community and fun. This event wouldn\'t have been possible without the amazing support of our volunteers and attendees.',
+        images: [dogCarnivalImg1, dogCarnivalImg2, dogCarnivalImg3, dogCarnivalImg4, dogCarnivalImg5,dogCarnivalImg6, dogCarnivalImg7, dogCarnivalImg8,dogCarnivalImg9, dogCarnivalImg10, dogCarnivalImg11],
     },
     {
         title: 'Recent Adoption Drives',
@@ -70,8 +88,8 @@ const EventsPage = () => {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.pageHeader}>
-                <h1>Our Events</h1>
-                <p>Celebrating milestones and sharing stories from the Pawsome community.</p>
+                <h1>Our Initiatives</h1>
+                <p>Reaching milestones and sharing stories from the Pawsome community.</p>
             </div>
             <div className={styles.eventsList}>
                 {eventsData.map((event) => (

@@ -40,7 +40,7 @@ function App() {
                         <Link to="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link to="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>About</Link>
                         <Link to="/adoption" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Adoption</Link>
-                        <Link to="/events" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Events</Link>
+                        <Link to="/events" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Initiatives</Link>
                         <Link to="/signup" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Join Us</Link>
                         <Link to="/donate" className={`${styles.navLink} ${styles.donateButton}`} onClick={() => setIsMenuOpen(false)}>Donate</Link>
                     </nav>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {FaShieldAlt, FaHeartbeat, FaHome, FaUtensils, FaPlusSquare} from 'react-icons/fa';
+import {FaShieldAlt, FaHeartbeat, FaHome, FaUtensils, FaPlusSquare, FaTree} from 'react-icons/fa';
 import ImageLightbox from './ImageLightbox'; // Import the new component
 import styles from './AboutPage.module.css';
 import appStyles from '../App.module.css';
@@ -103,6 +103,11 @@ const AboutPage = () => {
                             <FaHeartbeat className={styles.missionIcon} />
                             <h3>Public Health</h3>
                             <p>We organize vaccination and sterilization drives to promote public health and humanely control the stray animal population.</p>
+                        </div>
+                        <div className={styles.missionCard}>
+                            <FaTree className={styles.missionIcon} />
+                            <h3>Wildlife Conservation</h3>
+                            <p>We are committed to preserving our fragile coexistence with wildlife and work closely with the Forest Department to rescue wild animals.</p>
                         </div>
                         <div className={styles.missionCard}>
                             <FaHome className={styles.missionIcon} />
