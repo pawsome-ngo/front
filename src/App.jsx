@@ -9,6 +9,7 @@ import SignUpPage from './components/SignUpPage';
 import AdoptionPage from './components/AdoptionPage';
 import EventsPage from './components/EventsPage';
 import DonatePage from './components/DonatePage';
+import ReportIncidentPage from './components/ReportIncidentPage'; // Import the new page
 import AnniversarySplash from './components/AnniversarySplash'; // Import the new component
 
 // Import your icon images
@@ -63,6 +64,7 @@ function App() {
                     <Route path="/adoption" element={<AdoptionPage />} />
                     <Route path="/events" element={<EventsPage />} />
                     <Route path="/donate" element={<DonatePage />} />
+                    <Route path="/report-incident" element={<ReportIncidentPage />} />
                 </Routes>
 
                 {/* Footer */}

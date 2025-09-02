@@ -249,3 +249,52 @@
     display: block;
   }
 }
+/* --- Shared Reusable Button Styles --- */
+.btn {
+  padding: 0.85rem 1.5rem;
+  border: 2px solid transparent; /* Added for consistent sizing */
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s;
+}
+.btnPrimary {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+.btnPrimary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+  transform: translateY(-2px);
+}
+.btnSecondary {
+  background-color: transparent;
+  color: #3498db;
+  border-color: #3498db;
+}
+.btnSecondary:hover {
+  background-color: #3498db;
+  color: white;
+  transform: translateY(-2px);
+}
+.btnEmergency {
+  background-color: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+.btnEmergency:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+  transform: translateY(-2px);
+}
+.btnFullWidth {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+}

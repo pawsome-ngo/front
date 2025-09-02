@@ -35,6 +35,12 @@
     flex-wrap: wrap;
 }
 
+.mainActions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .heroImageContainer {
     max-width: 500px;
     width: 100%;
@@ -63,6 +69,12 @@
     }
 
     .heroButtons {
+        justify-content: center;
+        flex-direction: column-reverse; /* This will reorder the buttons */
+        align-items: center;
+    }
+
+    .mainActions {
         justify-content: center;
     }
 }
