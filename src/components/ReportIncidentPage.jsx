@@ -6,6 +6,8 @@ import SignUpModal from './SignUpModal';
 import styles from './ReportIncidentPage.module.css';
 import appStyles from '../App.module.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const ReportIncidentPage = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ const ReportIncidentPage = () => {
         description: '',
         latitude: null,
         longitude: null,
+        location: '', // <-- 1. Added new location field to state
     });
     const [mediaFiles, setMediaFiles] = useState([]);
     const [locationStatus, setLocationStatus] = useState('');
@@ -33,7 +36,6 @@ const ReportIncidentPage = () => {
     };
 
     const handleFileChange = (e) => {
-        // **FIX:** Append new files instead of overwriting existing ones
         setMediaFiles(prevFiles => [...prevFiles, ...e.target.files]);
     };
 
@@ -88,7 +90,6 @@ const ReportIncidentPage = () => {
 
     const deleteAudioRecording = () => {
         setAudioURL('');
-        // **FIX:** Correctly filter out the audio file from the state
         setMediaFiles(prevFiles => prevFiles.filter(file => !file.name.startsWith('voice-report-')));
     };
 
@@ -104,7 +105,7 @@ const ReportIncidentPage = () => {
 
         const data = new FormData();
         const incidentDetails = {
-            ...formData,
+            ...formData, // The new location field is automatically included here
             latitude: formData.latitude || undefined,
             longitude: formData.longitude || undefined,
         };
@@ -115,7 +116,7 @@ const ReportIncidentPage = () => {
         });
 
         try {
-            const response = await fetch('https://f96027dbd226.ngrok-free.app/api/incidents/report', {
+            const response = await fetch(`${API_BASE_URL}/api/incidents/report`, {
                 method: 'POST',
                 body: data,
             });
@@ -162,7 +163,6 @@ const ReportIncidentPage = () => {
                 </div>
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.formGrid}>
-                        {/* ... other form groups remain the same ... */}
                         <div className={styles.formGroup}>
                             <label htmlFor="informerName" className={styles.formLabel}>Your Name</label>
                             <input type="text" id="informerName" name="informerName" className={styles.formInput} value={formData.informerName} onChange={handleChange} required />
@@ -177,7 +177,24 @@ const ReportIncidentPage = () => {
                         </div>
                         <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
                             <label htmlFor="description" className={styles.formLabel}>Description of Incident</label>
-                            <textarea id="description" name="description" rows="4" className={styles.formTextarea} value={formData.description} onChange={handleChange} required placeholder="Describe the animal's condition, location, and any other relevant details."></textarea>
+                            <textarea id="description" name="description" rows="4" className={styles.formTextarea} value={formData.description} onChange={handleChange} required placeholder="Describe the animal's condition, injuries, and behavior."></textarea>
+                        </div>
+
+                        {/* 2. Added new location text input field */}
+                        <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
+                            <label htmlFor="location" className={styles.formLabel}>
+                                Location Description (e.g., street, landmark)
+                            </label>
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                className={styles.formInput}
+                                value={formData.location}
+                                onChange={handleChange}
+                                placeholder="e.g., Near City Park, opposite the bakery on Main St."
+                                required
+                            />
                         </div>
 
                         <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
@@ -207,7 +224,6 @@ const ReportIncidentPage = () => {
                             />
                         </div>
 
-                        {/* UI Improvement: Display staged files */}
                         {mediaFiles.length > 0 && (
                             <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
                                 <label className={styles.formLabel}>Files to Upload</label>
@@ -225,7 +241,7 @@ const ReportIncidentPage = () => {
                         )}
 
                         <div className={`${styles.formGroup} ${styles.formGroupFullWidth}`}>
-                            <label className={styles.formLabel}>Incident Location (Optional)</label>
+                            <label className={styles.formLabel}>Pinpoint Location with GPS (Optional)</label>
                             <button type="button" onClick={handleGetLocation} className={`${appStyles.btn} ${appStyles.btnSecondary}`}>
                                 Use My Current Location
                             </button>

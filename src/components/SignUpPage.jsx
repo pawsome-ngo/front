@@ -6,6 +6,8 @@ import CustomSelect from './CustomSelect';
 import styles from './SignUpPage.module.css';
 import appStyles from '../App.module.css';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const SignUpPage = () => {
     const navigate = useNavigate(); // Hook for navigation
     const [formData, setFormData] = useState({
@@ -61,7 +63,7 @@ const SignUpPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('https://f96027dbd226.ngrok-free.app/api/auth/signup', {
+            const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
