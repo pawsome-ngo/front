@@ -40,9 +40,9 @@ function App() {
                     <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
                         <Link to="/" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link to="/about" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>About</Link>
-                        <Link to="/adoption" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Adoption</Link>
+                        {/*<Link to="/adoption" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Adoption</Link>*/}
                         <Link to="/events" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Initiatives</Link>
-                        <Link to="/signup" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Join Us</Link>
+                        {/*<Link to="/signup" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>Join Us</Link>*/}
                         <Link to="/donate" className={`${styles.navLink} ${styles.donateButton}`} onClick={() => setIsMenuOpen(false)}>Donate</Link>
                     </nav>
                     <button
@@ -60,11 +60,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/about" element={<AboutPage />} />
-                    <Route path="/signup" element={<SignUpPage />} />
-                    <Route path="/adoption" element={<AdoptionPage />} />
+                    {/*<Route path="/signup" element={<SignUpPage />} />*/}
+                    {/*<Route path="/adoption" element={<AdoptionPage />} />*/}
                     <Route path="/events" element={<EventsPage />} />
                     <Route path="/donate" element={<DonatePage />} />
-                    <Route path="/report-incident" element={<ReportIncidentPage />} />
+                    {/*<Route path="/report-incident" element={<ReportIncidentPage />} />*/}
                 </Routes>
 
                 {/* Footer */}

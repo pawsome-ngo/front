@@ -20,13 +20,13 @@ const HomePage = () => (
             <p className={styles.heroSubtitle}>
                 We are dedicated to rescuing, rehabilitating, and rehoming animals in need. Your support can change a life today.
             </p>
-            <div className={styles.heroButtons}>
-                <div className={styles.mainActions}>
-                    <Link to="/adoption" className={`${appStyles.btn} ${appStyles.btnPrimary}`}>Adopt a Friend</Link>
-                    <Link to="/signup" className={`${appStyles.btn} ${appStyles.btnSecondary}`}>Join Us</Link>
-                </div>
-                <Link to="/report-incident" className={`${appStyles.btn} ${appStyles.btnEmergency}`}>Report an Incident</Link>
-            </div>
+            {/*<div className={styles.heroButtons}>*/}
+            {/*    <div className={styles.mainActions}>*/}
+            {/*        <Link to="/adoption" className={`${appStyles.btn} ${appStyles.btnPrimary}`}>Adopt a Friend</Link>*/}
+            {/*        <Link to="/signup" className={`${appStyles.btn} ${appStyles.btnSecondary}`}>Join Us</Link>*/}
+            {/*    </div>*/}
+            {/*    <Link to="/report-incident" className={`${appStyles.btn} ${appStyles.btnEmergency}`}>Report an Incident</Link>*/}
+            {/*</div>*/}
         </div>
         <div className={styles.heroImageContainer}>
             <Carousel images={homePageImages} />
